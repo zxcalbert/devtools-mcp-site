@@ -1,0 +1,84 @@
+/* 电影 / 文艺风与现代简约结合：参考用户提供的 movie.html */
+:root{
+  --bg:#0f1724; /* 深色底 */
+  --panel:#0b1220;
+  --card:#0f1726;
+  --muted:#9aa4b2;
+  --accent:#ffd43b; /* 暖色点缀 */
+  --text:#e6eef8;
+  --max-width:1100px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,Georgia;
+  background:linear-gradient(180deg,#071026 0%,var(--bg) 60%);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+}
+.container{max-width:var(--max-width);margin:0 auto;padding:28px}
+.site-header{position:sticky;top:0;background:rgba(6,10,18,0.4);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.02)}
+.header-inner{display:flex;align-items:center;justify-content:space-between}
+.brand{font-weight:700;font-size:18px;letter-spacing:0.6px}
+.main-nav a{color:var(--muted);text-decoration:none;margin-left:20px;padding:8px 0;transition:color .18s}
+.main-nav a:hover{color:var(--text)}
+.main-nav a.active{color:var(--accent);font-weight:700}
+
+/* 移动导航切换按钮 */
+.nav-toggle{display:none;background:transparent;border:0;width:44px;height:36px;cursor:pointer;align-items:center;justify-content:center}
+.nav-toggle span{display:block;height:2px;background:var(--text);margin:6px 8px;border-radius:2px;width:22px;opacity:0.95}
+
+/* Hero — 居中、大字号、具电影感 */
+.hero{padding:88px 0 60px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-image:url('assets/matrix-1089438.jpg');background-size:cover;background-position:center;filter:contrast(0.9) saturate(0.95);transform:scale(1.03);z-index:0}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,6,12,0.55) 10%, rgba(2,6,12,0.75) 60%);z-index:1}
+.hero > .container{position:relative;z-index:2}
+.hero h1{font-family:Georgia, 'Times New Roman', serif;font-weight:600;font-size:48px;margin:0 0 14px;color:var(--text);line-height:1.06}
+.lead{color:var(--muted);font-size:18px;margin:0 auto 12px;max-width:720px}
+.meta{color:var(--muted);font-size:13px;margin-top:6px}
+.cta-row{margin-top:26px}
+.btn{display:inline-block;background:var(--accent);color:#08202a;padding:10px 18px;border-radius:999px;text-decoration:none;margin-right:12px;font-weight:700}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
+
+/* 主体卡片与网格 — 更电影海报感 */
+.summary{display:block;margin-top:34px}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.04));padding:22px;border-radius:10px;box-shadow:0 10px 30px rgba(2,6,23,0.6);margin-bottom:22px;border:1px solid rgba(255,255,255,0.02)}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:18px}
+.mini-card{background:transparent;padding:18px;border-radius:8px;border:1px solid rgba(255,255,255,0.02)}
+.mini-card h3{margin-top:0;color:var(--text)}
+.mini-card p{color:var(--muted)}
+
+/* 图片风格（供未来使用） */
+.poster{width:100%;height:220px;object-fit:cover;border-radius:8px;margin-bottom:12px}
+
+/* 头像专用 */
+.avatar{width:96px;height:96px;object-fit:cover;border-radius:50%;border:3px solid rgba(255,255,255,0.06);display:block;margin:0 auto 18px}
+
+.site-footer{padding:28px 0;color:var(--muted);display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.02);margin-top:36px}
+
+@media(min-width:900px){
+  .hero h1{font-size:72px}
+  .lead{font-size:20px}
+}
+
+.about-me p{line-height:1.8;color:var(--muted)}
+
+/* 小屏优化：更紧凑的留白 */
+@media(max-width:640px){
+  .hero{padding:56px 0}
+  .hero h1{font-size:32px}
+}
+
+/* 响应式：小屏幕折叠导航和海报自适应 */
+@media(max-width:900px){
+  .nav-toggle{display:flex}
+  .main-nav{position:absolute;right:20px;top:64px;background:rgba(6,10,18,0.9);padding:12px;border-radius:10px;display:none;flex-direction:column;box-shadow:0 8px 30px rgba(0,0,0,0.6)}
+  .main-nav.open{display:flex}
+  .main-nav a{margin:8px 0}
+  .container{padding:16px}
+  .poster{height:160px}
+  .avatar{width:80px;height:80px}
+  .hero h1{font-size:40px}
+  .lead{font-size:15px}
+}
